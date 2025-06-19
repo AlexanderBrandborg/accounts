@@ -75,7 +75,7 @@ def get_user(username: str):
     """ Endpoint for getting a user by username """
     user = store.get_user(username)
     app.logger.info("Successfully fetched user upon request. username=%s, user_id=%s", user.username, user.id)
-    return jsonify({"username": user.username})
+    return jsonify({"user": user})
 
 @app.route("/auth", methods = ["GET"])
 def authenticate():
@@ -109,7 +109,7 @@ def create_account():
     account = accountCollection.create_account(user_id, balance)
 
     app.logger.info("Successfully created a new account. account_id=%s, user_id=%s", account.id, user_id)
-    return jsonify(account)
+    return jsonify({'account':account})
 
 
 @app.route('/accounts/<account_id>', methods=['GET'])
@@ -119,7 +119,7 @@ def get_account(account_id: str):
     user_id = get_jwt_identity()
     account = accountCollection.get_user_account(user_id, account_id)
     app.logger.info("Successfully fetched account for user upon request. account_id=%s, user_id=%s", account.id, user_id)
-    return jsonify(account)
+    return jsonify({'account': account})
 
 @app.route('/accounts', methods=['GET'])
 @jwt_required()
@@ -128,7 +128,7 @@ def get_accounts():
     user_id = get_jwt_identity()
     accounts = accountCollection.get_user_accounts(user_id)
     app.logger.info("Successfully fetched accounts for user upon request.  user_id=%s", user_id)
-    return jsonify(accounts)
+    return jsonify({'accounts': accounts})
 
 
 @app.route('/accounts/<account_id>', methods=['PATCH'])
@@ -148,4 +148,4 @@ def transfer(account_id: str):
     
     account = accountCollection.transfer(user_id, account_id, to_account_id, amount)
     app.logger.info("Successfully transfered an amount between two accounts. from_account_id=%s, to_account_id=%s", account_id, to_account_id)
-    return jsonify(account)
+    return jsonify({'account':account})

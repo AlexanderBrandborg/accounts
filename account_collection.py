@@ -29,7 +29,7 @@ class AccountUpdateError(APIError):
 
 class InvalidInitialBalanceError(APIError):
     def __init__(self, balance):
-        super().__init__("Submitted balance must be an integer above 0", 400, balance=balance)
+        super().__init__("Submitted balance must be an integer at 0 or above", 400, balance=balance)
 
 class AccountNotFoundError(APIError):
     def __init__(self, account_id: str):
