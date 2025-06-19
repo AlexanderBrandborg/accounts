@@ -72,7 +72,7 @@ class AccountCollection():
             account = self.__account_store.create_account(user_id, initial_balance)
             self.audit_logger.info("Account created. account_id=%s, user_id=%s", account.id, user_id)
         except AccountStoreCreateError as e:
-            self.root_logger.error("Unexpected error occurred when trying to create account. e='%s'", e)
+            self.root_logger.warning("Unexpected error occurred when trying to create account. e='%s'", e)
             raise AccountCreateError() from e
         return account
 

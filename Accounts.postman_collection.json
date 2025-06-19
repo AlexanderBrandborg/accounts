@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "294a17ac-878a-4d9d-86f1-d7457ae77b2d",
+		"name": "Accounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15879903",
+		"_collection_link": "https://martian-rocket-445009.postman.co/workspace/Calculator~d6272f3d-ab66-49e4-8c65-9de1ba785b57/collection/15879903-294a17ac-878a-4d9d-86f1-d7457ae77b2d?action=share&source=collection_link&creator=15879903"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"pm.environment.set('userId', response.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alex\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "potatos",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "rejesalat",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alex\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc1MDE0Nzg2MywianRpIjoiMTdhMzhlYWEtMzJjNS00MWVlLWJkMTAtMDViYzY2YTEzM2NmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNkNWZiMTgwLTU3ZTYtNGRmYy05NzllLTQ0Zjk5YzI3OGE5NSIsIm5iZiI6MTc1MDE0Nzg2MywiY3NyZiI6ImI1Yjk5ZTMxLTNhMjctNGNlMi1hYmQ0LWY3YzNhZDY3ODhjNSIsImV4cCI6MTc1MDE0ODc2M30.CdavEHYYc63ueHlVolKLJTzXn2T9nnDjZsSEQTTBtdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"balance\": 10\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/accounts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc1MDE0Nzg2MywianRpIjoiMTdhMzhlYWEtMzJjNS00MWVlLWJkMTAtMDViYzY2YTEzM2NmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNkNWZiMTgwLTU3ZTYtNGRmYy05NzllLTQ0Zjk5YzI3OGE5NSIsIm5iZiI6MTc1MDE0Nzg2MywiY3NyZiI6ImI1Yjk5ZTMxLTNhMjctNGNlMi1hYmQ0LWY3YzNhZDY3ODhjNSIsImV4cCI6MTc1MDE0ODc2M30.CdavEHYYc63ueHlVolKLJTzXn2T9nnDjZsSEQTTBtdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alex\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/accounts/66140bed-ad43-4225-b432-6eeee145f811",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts",
+						"66140bed-ad43-4225-b432-6eeee145f811"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc1MDE0Nzg2MywianRpIjoiMTdhMzhlYWEtMzJjNS00MWVlLWJkMTAtMDViYzY2YTEzM2NmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImNkNWZiMTgwLTU3ZTYtNGRmYy05NzllLTQ0Zjk5YzI3OGE5NSIsIm5iZiI6MTc1MDE0Nzg2MywiY3NyZiI6ImI1Yjk5ZTMxLTNhMjctNGNlMi1hYmQ0LWY3YzNhZDY3ODhjNSIsImV4cCI6MTc1MDE0ODc2M30.CdavEHYYc63ueHlVolKLJTzXn2T9nnDjZsSEQTTBtdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to_account_id\": \"66140bed-ad43-4225-b432-6eeee145f811\",\r\n    amount: 5\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/accounts/ea97d475-6d5b-4e17-ba42-7f20ba36c00c",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts",
+						"ea97d475-6d5b-4e17-ba42-7f20ba36c00c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
